@@ -4,7 +4,7 @@
 #include "database_operations.h"
 #include "manager.h"
 
-// test
+//
 class DatabaseManager : Manager{
 public:
     static void createDatabase(const CreateDatabaseOperation* operation);
