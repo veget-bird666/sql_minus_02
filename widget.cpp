@@ -2,6 +2,7 @@
 #include "./ui_widget.h"
 #include "operation.h"
 #include "sqlparser.h"
+using namespace std;
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
@@ -31,10 +32,14 @@ void Widget::on_executeButton_clicked()
 
         Operation* o = SqlParser::parse(sql_command);
         o->execute();
-    } catch (...) {
-        showMessage("SQL command is not correct.");
+    } catch (exception e) {
+        showMessage(e.what());
+    } catch(_exception e){
+        showMessage(e.name);
     }
 }
+
+
 
 // 粘贴文本操作
 void Widget::showMessage(QString message){
